@@ -1,8 +1,10 @@
 const container = document.querySelector('#profile-container');
 const modal = document.getElementById('myModal')
 const modalSpan = document.getElementsByClassName("close")[0];
+const searchInput = document.getElementById('search-input')
+const searchButton = document.getElementById('search-button')
 
-const UsersData = [];
+const usersData = [];
 
 async function getData(url) {
     try{
@@ -48,9 +50,11 @@ const cardProfile = (id, name ,username ,email ,phone ,company ,street, suite) =
 }
 
 function render() {
+    container.innerHTML = '';
     getData("https://jsonplaceholder.typicode.com/users")
     .then((response) =>{
-        usersData = response;
+        usersData.length = 0;
+        usersData.push(...response);
         response.forEach(result => {
             cardProfile(result.id,result.name ,result.username ,result.email ,result.phone ,result.company.name ,result.address.street,result.address.suite);
         });
@@ -71,7 +75,7 @@ const popUpProfile = (id) => {
     document.getElementById('lng').innerHTML = `lng: ${user.address.geo.lng}`
     document.getElementById('companyName').innerHTML = `companyName: ${user.company.name}`
     document.getElementById('catchPhrase').innerHTML = `catchPhrase: ${user.company.catchPhrase}`
-   document.getElementById('bs').innerHTML = `companyName: ${user.company.bs}`
+    document.getElementById('bs').innerHTML = `companyName: ${user.company.bs}`
 }
 
 container.addEventListener('click', function (e) {
@@ -94,4 +98,24 @@ window.onclick = function(event) {
   }
 }
 
+
+function findName(name){
+    const results = usersData.filter(user => user.name.toLowerCase().includes(name.toLowerCase()));
+    container.innerHTML = '';
+    results.forEach(result => {
+            cardProfile(result.id,result.name ,result.username ,result.email ,result.phone ,result.company.name ,result.address.street,result.address.suite);
+        });
+}
+
+searchInput.addEventListener('input',function(){
+    const value = searchInput.value;
+    if(value.length > 0){
+        findName(value)
+    }
+    else{
+        render();
+    }
+})
+
+console.log(container)
 render();

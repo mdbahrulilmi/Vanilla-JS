@@ -19,6 +19,30 @@ header{
     align-items: center;
 }
 
+nav{
+    padding: 15px;
+    justify-content: end;
+}
+
+nav input{
+    border: #b7cad1 2px solid;
+    border-radius: 4px;
+    height: 30px;
+    width: 250px;
+    margin-right: 6px;
+}
+
+nav button{
+    border: #b7cad1 2px solid;
+    border-radius: 4px;
+    background-color:#b7cad1;
+    color: #fff;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
 #profile-container{
     display: grid;
     place-items: center;
@@ -131,7 +155,7 @@ header{
         width: 300px;
     }
     .modal-content{
-        width: 80%;
+        width: 70%;
     }
 }
 
