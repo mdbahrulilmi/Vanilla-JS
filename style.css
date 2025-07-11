@@ -1,0 +1,96 @@
+body{
+    background-color: #e9f1f4;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem 2rem;
+}
+header{
+    text-align: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+
+#profile-container{
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+}
+
+@media only screen and (max-width:480px) {
+    #profile-container{
+        grid-template-columns: auto;
+        gap: 1rem;
+    }
+    .card{
+        padding: 0;
+        width: 250px;
+    }
+}
+@media only screen and (min-width:481px) and (max-width:768px) {
+    #profile-container{
+        grid-template-columns: auto auto;
+        gap: 1rem;
+    }
+    .card{
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width:769px){
+    #profile-container{
+        grid-template-columns: auto auto auto;
+    }
+    .card{
+        width: 400px;
+    }
+}
+
+.card{
+    background-color: #ffffff;
+    border-radius: 7px;
+    padding: 1rem;
+    border-bottom: rgb(156 192, 135) 4px solid;
+}
+
+.tag{
+    background-color: rgb(156 192, 135);
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Main */
+.card .main{
+    padding: 0.5rem;
+    text-align: center;
+    line-height: 10px;
+}
+.card .main .name{
+    font-weight: bold;
+}
+.card .main .position{
+    font-weight: bold;
+}
+.card .image-profile{
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+/* Description */
+.description{
+    background-color: #e9f1f4;
+    border: #b7cad1 1px solid;
+    border-radius: 7px;
+    padding: 6px 14px;
+}
